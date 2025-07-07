@@ -1,0 +1,72 @@
+/* ===== About Page ===== */
+.about-container {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 40px 30px;
+  background-color: #1e1b17;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  color: white;
+  line-height: 1.7;
+  transition: all 0.3s ease-in-out;
+}
+
+.about-container h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: white;
+  margin-bottom: 25px;
+}
+
+.about-container p {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.about-container ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 20px 0;
+}
+
+.about-container ul li {
+  position: relative;
+  padding-left: 28px;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+.about-container ul li::before {
+  content: "🍴";
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.about-container blockquote,
+.about-container em {
+  display: block;
+  margin-top: 30px;
+  padding-left: 15px;
+  border-left: 3px solid #007bff;
+  font-style: italic;
+  color: white;
+}
+
+/* 💡 Responsive */
+@media (max-width: 768px) {
+  .about-container {
+    padding: 25px 20px;
+    margin: 30px 10px;
+  }
+
+  .about-container h2 {
+    font-size: 2rem;
+  }
+
+  .about-container p,
+  .about-container ul li {
+    font-size: 1rem;
+  }
+}

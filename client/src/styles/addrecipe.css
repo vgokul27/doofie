@@ -1,0 +1,88 @@
+/* ✅ Entire page wrapper */
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;          
+  padding: 40px 20px;
+  min-height: 100vh;
+  background-color: black;
+  box-sizing: border-box;
+}
+
+/* ✅ Form card */
+.form-wrapper {
+  max-width: 500px;
+  width: 100%;
+  background: white;
+  padding: 25px;
+  margin-top: 3%;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Title */
+.form-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+/* ✅ Input fields */
+.recipe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.recipe-form input,
+.recipe-form textarea {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #6e6b6b;
+  font-size: 1rem;
+  resize: vertical;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ✅ Submit Button */
+.recipe-form button {
+  padding: 12px;
+  background: crimson;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+
+.recipe-form button:hover {
+  background: #0056b3;
+}
+
+/* ✅ Message */
+.msg {
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: green;
+}
+
+/* 📱 Mobile responsive */
+@media (max-width: 600px) {
+  .form-wrapper {
+    padding: 20px;
+  }
+
+  .form-title {
+    font-size: 1.4rem;
+  }
+
+  .recipe-form input,
+  .recipe-form textarea,
+  .recipe-form button {
+    font-size: 0.95rem;
+  }
+}
