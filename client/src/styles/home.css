@@ -1,6 +1,7 @@
 .home-page {
   padding: 20px;
   animation: fadeIn 0.4s ease;
+  background-color: #1e1b17;
 }
 
 .card-container {
@@ -124,4 +125,22 @@
   color: white;
   font-size: 1.2rem;
   margin-top: 20px;
+}
+
+.load-more-btn {
+  margin: 20px auto;
+  display: block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background-color: crimson;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.load-more-btn:hover {
+  background-color: #f0a500;
+  color: black;
 }

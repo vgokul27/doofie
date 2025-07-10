@@ -1,6 +1,5 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
@@ -9,25 +8,24 @@ import About from "./pages/About";
 import Settings from "./pages/Settings";
 import ApiKey from "./pages/ApiKey";
 import RecipeDetails from "./pages/RecipeDetails";
-
-import ProtectedRoute from "./components/ProtectedRoute";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   const location = useLocation();
   const [sidebarVisible, setSidebarVisible] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const sidebarRef = useRef(null);
 
-  const hideLayoutRoutes = ["/", "/login"];
+  const hideLayoutRoutes = ["/", "/login", "/signup"];
   const hideLayout = hideLayoutRoutes.includes(location.pathname);
 
   const toggleSidebar = () => {
     setSidebarVisible((prev) => !prev);
   };
 
-   useEffect(() => {
+  useEffect(() => {
     const handleClickOutside = (event) => {
       if (
         sidebarRef.current &&
@@ -43,35 +41,22 @@ function App() {
   }, [sidebarVisible]);
 
   return (
-    <div className={darkMode ? "app dark" : "app"}>
+    <div>
       {/* Navbar */}
-      {!hideLayout && (
-        <Navbar
-          toggleSidebar={toggleSidebar}
-          darkMode={darkMode}
-          setDarkMode={setDarkMode}
-        />
-      )}
+      {!hideLayout && <Navbar toggleSidebar={toggleSidebar} />}
 
-      {/* Sidebar - only when toggled */}
-      {!hideLayout && sidebarVisible && (
-        <div className="sidebar-wrapper">
-          <Sidebar collapsed={false} setCollapsed={setSidebarVisible} />
-        </div>
-      )}
-
-      {/* ✅ Sidebar with outside click detection */}
+      {/* Sidebar */}
       {!hideLayout && sidebarVisible && (
         <div ref={sidebarRef} className="sidebar-wrapper">
           <Sidebar collapsed={false} setCollapsed={setSidebarVisible} />
         </div>
       )}
 
-
-      {/* Page content */}
+      {/* Page Content */}
       <div style={{ flex: 1, padding: hideLayout ? "0" : "20px" }}>
         <Routes>
-          <Route path="/" element={<SignUp />} />
+          <Route path="/" element={<Navigate to="/signup" />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
           <Route path="/addrecipe" element={<ProtectedRoute><AddRecipe /></ProtectedRoute>} />
@@ -80,6 +65,8 @@ function App() {
           <Route path="/apikey" element={<ProtectedRoute><ApiKey /></ProtectedRoute>} />
           <Route path="/recipes/:id" element={<ProtectedRoute><RecipeDetails /></ProtectedRoute>} />
         </Routes>
+
+        {!hideLayout && <Footer />}
       </div>
     </div>
   );

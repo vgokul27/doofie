@@ -5,7 +5,8 @@ import "../styles/home.css";
 
 function Home() {
   const [recipes, setRecipes] = useState([]);
-  const [search, setSearch] = useState(""); // 🔍 search query
+  const [search, setSearch] = useState("");
+  const [visibleCount, setVisibleCount] = useState(15); // start with 15
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,9 +22,15 @@ function Home() {
     fetchRecipes();
   }, []);
 
-  const filteredRecipes = recipes.filter((recipe) =>
-    recipe.title.toLowerCase().includes(search.toLowerCase())
-  );
+  const filteredRecipes = search
+    ? recipes.filter((recipe) =>
+        recipe.title.toLowerCase().includes(search.toLowerCase())
+      )
+    : recipes.slice(0, visibleCount);
+
+  const handleLoadMore = () => {
+    setVisibleCount((prev) => prev + 5);
+  };
 
   return (
     <div className="home-container">
@@ -32,7 +39,10 @@ function Home() {
         className="search-bar"
         placeholder="Search recipes..."
         value={search}
-        onChange={(e) => setSearch(e.target.value)}
+        onChange={(e) => {
+          setSearch(e.target.value);
+          setVisibleCount(15); // reset when searching
+        }}
       />
 
       <div className="recipes-grid">
@@ -48,9 +58,16 @@ function Home() {
             </div>
           ))
         ) : (
-          <p className="no-results"> No recipes found for "{search}"</p>
+          <p className="no-results">No recipes found for "{search}"</p>
         )}
       </div>
+
+      {!search && visibleCount < recipes.length && (
+        <button className="load-more-btn" onClick={handleLoadMore}>
+          <strong>Load More</strong>
+        </button>
+      )}
+      <br />
     </div>
   );
 }

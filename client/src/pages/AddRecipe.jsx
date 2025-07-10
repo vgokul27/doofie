@@ -17,7 +17,7 @@ function AddRecipe() {
     ingredients: "",
     instructions: "",
     cookingTime: "",
-    nutrition: [{ nutrient: "", value: "" }],
+    nutrition: "",
   });
 
   const [message, setMessage] = useState("");
@@ -55,12 +55,12 @@ function AddRecipe() {
       ingredients: "",
       instructions: "",
       cookingTime: "",
-      nutrition: [{ nutrient: "", value: "" }],
+      nutrition: "",
     });
 
     setTimeout(() => {
       setMessage("");
-      navigate("/home");
+      navigate("/Home");
     }, 1000);
   } catch (err) {
     console.error("❌ Error posting recipe:", err.response?.data || err.message);

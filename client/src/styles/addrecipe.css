@@ -70,6 +70,14 @@
   color: green;
 }
 
+/* ✅ Error message */
+.error {
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: red;
+}
+
 /* 📱 Mobile responsive */
 @media (max-width: 600px) {
   .form-wrapper {
