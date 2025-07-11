@@ -115,6 +115,7 @@ function SignUp() {
         </p>
       </form>
     </div>
+    
   );
 }
 

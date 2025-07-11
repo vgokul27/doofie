@@ -1,25 +1,30 @@
 import "../styles/footer.css";
-
+import { FaInstagram, FaTwitter, FaGithub } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 function Footer() {
+    const navigate = useNavigate();
+
+    const handleNavClick = (path) => {
+    navigate(path);
+  };
+
     return (
         <footer className="footer">
             <div className="footer-brand">
-                <h2>DOOFIE API</h2>
                 <p>“Cook for yourself before you get cooked by life.”</p>
             </div>
 
-            <div className="footer-links">
-                <a href="/home">Home</a>
-                <a href="/about">About</a>
-                <a href="/add">Add Recipe</a>
-                <a href="/apikey">API Key</a>
-            </div>
+            <ul className="footer-links">
+                <li onClick={() => handleNavClick('/about')}>About Doofie</li>
+            </ul>
+
+            <div className="contact-us">Contact Us :</div>
 
             <div className="footer-socials">
-                <a href="#"><i className="fab fa-instagram"></i></a>
-                <a href="#"><i className="fab fa-twitter"></i></a>
-                <a href="#"><i className="fab fa-github"></i></a>
+                <a href="#"><FaInstagram className="fab fa-instagram" /></a>
+                <a href="#"><FaTwitter className="fab fa-twitter" /></a>
+                <a href="#"><FaGithub className="fab fa-github" /></a>
             </div>
 
             <div className="footer-copy">

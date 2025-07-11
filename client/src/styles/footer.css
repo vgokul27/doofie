@@ -1,54 +1,62 @@
 .footer {
   background-color: #1e1b17;
   color: #eee;
-  padding: 2rem 1.5rem;
+  padding: 1rem 1.5rem;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 5px;
   font-family: 'Segoe UI', sans-serif;
   border-top: #aaa 1px solid;
 }
 
-.footer-brand {
-  flex: 1 1 200px;
-}
 
-.footer-brand h2 {
-  margin: 0 0 0.5rem;
-  font-size: 1.8rem;
-  color: #ff5722;
+
+.footer-brand p{
+  padding-top: 10px;
+  font-size: 1.2rem;
+  margin: 0;
+  color: #ccc;
+  align-items: center;
 }
 
 .footer-links {
-  flex: -5 1 150px;
+  padding: 0.5rem;
   display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  
 }
 
-.footer-links a {
-  text-decoration: none;
+.footer-links li {
+  list-style: none;
   color: #ccc;
+  padding: 0.5rem 1rem;
   font-size: 1rem;
   transition: color 0.2s ease;
 }
 
-.footer-links a:hover {
-  color: #fff;
+.footer-links li:hover {
+  cursor: pointer;
+  color: #ff5722;
+}
+
+.contact-us {
+  font-size: 1rem;
+  color: #ccc;
+  text-align: center;
+  font-weight: bold;
+  padding: 0.5rem;
 }
 
 .footer-socials {
-  flex: 1 1 150px;
   display: flex;
-  gap: 1rem;
+  gap: 1.2rem;
   align-items: center;
 }
 
 .footer-socials a {
   color: #ccc;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   transition: color 0.2s ease;
 }
 
@@ -56,12 +64,13 @@
   color: #ff5722;
 }
 
-.footer-copy {
+.footer-copy p {
   flex-basis: 100%;
   text-align: center;
-  margin-top: 1rem;
+  margin-top: 2rem;
+  
   font-size: 0.9rem;
-  color: #aaa;
+  color: #ccc;
 }
 
 /* 🔁 Responsive */
