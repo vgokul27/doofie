@@ -3,6 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "../styles/navbar.css";
 import { useState } from "react";
 import Sidebar from './Sidebar';
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Calistoga&display=swap');
+</style>
 
 const Navbar = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
