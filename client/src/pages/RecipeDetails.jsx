@@ -46,11 +46,7 @@ function RecipeDetails() {
         </div>
 
         <h3>Ingredients:</h3>
-        <ul>
-          {recipe.ingredients.map((item, index) => (
-            <li key={index}>{item}</li>
-          ))}
-        </ul>
+        <p>{recipe.ingredients.join(" , ")}</p>
 
         <h3>Instructions:</h3>
         {recipe.instructions

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaHome, FaPlus, FaKey, FaInfoCircle, FaTimes } from 'react-icons/fa';
+import { FaHome, FaPlus, FaKey, FaInfoCircle, FaTimes, FaSignOutAlt } from 'react-icons/fa';
 import '../styles/sidebar.css'; 
 
 const Sidebar = ({ isOpen, onClose }) => {
@@ -31,9 +31,9 @@ const Sidebar = ({ isOpen, onClose }) => {
           <FaKey className="sidebar-icon" />
           <span>API Key</span>
         </li>
-        <li onClick={() => handleNavigation('/about')}>
-          <FaInfoCircle className="sidebar-icon" />
-          <span>About</span>
+        <li onClick={() => handleNavigation('/login')}>
+          <FaSignOutAlt className="sidebar-icon" />
+          <span>Logout</span>
         </li>
       </ul>
     </div>

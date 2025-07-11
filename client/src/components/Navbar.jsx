@@ -27,7 +27,7 @@ const Navbar = () => {
           <li onClick={() => handleNavClick('/home')}>Home</li>
           <li onClick={() => handleNavClick('/addrecipe')}>Add Recipe</li>
           <li onClick={() => handleNavClick('/apikey')}>API Key</li>
-          <li onClick={() => handleNavClick('/about')}>About</li>
+          <li onClick={() => handleNavClick('/login')}>Logout</li>
         </ul>
       </nav>
 

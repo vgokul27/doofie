@@ -59,7 +59,8 @@
 }
 
 .recipe-form button:hover {
-  background: #0056b3;
+  background: #f0a500;
+  color: black;
 }
 
 /* ✅ Message */
