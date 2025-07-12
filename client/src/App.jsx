@@ -12,7 +12,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import ProtectedRoute from "./components/ProtectedRoute";
-import ForgotPassword from "./pages/ForgotPassword";
+import ForgotPassword from "./components/ForgotPassword";
 
 function App() {
   const location = useLocation();
