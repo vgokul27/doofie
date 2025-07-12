@@ -27,6 +27,8 @@
   left: 47%;
   transform: translateX(-50%);
   font-size: 1.8rem;
+  font-family: 'Segoe UI', sans-serif;
+
   font-weight: 600;
   white-space: nowrap;
 }
@@ -58,7 +60,7 @@
 .nav-links li.active {
   color: #f0a500; 
   font-weight: bold;
-  border-bottom: 2px solid #f0a500; 
+  border-bottom: 1px solid #f0a500; 
 }
 
 
