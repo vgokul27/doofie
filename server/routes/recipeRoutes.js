@@ -8,7 +8,7 @@ import {
 import {
   verifyToken,
   verifyAdmin
-} from "../config/authMiddleware.js"; // ✅ Import auth middleware
+} from "../config/authMiddleware.js";
 
 const router = express.Router();
 

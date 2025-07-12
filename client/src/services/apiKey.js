@@ -11,7 +11,7 @@ export const fetchApiKey = async () => {
 
 export const regenerateKey = async () => {
   const token = await getAuthToken();
-  const res = await axios.post("http://localhost:5000/api/apikey/regenerate", {}, {
+  const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/apikey/regenerate`, {}, {
     headers: { Authorization: `Bearer ${token}` },
   });
   return res.data.apiKey;

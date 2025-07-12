@@ -6,16 +6,22 @@ import "../styles/home.css";
 function Home() {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
-  const [visibleCount, setVisibleCount] = useState(15); // start with 15
+  const [visibleCount, setVisibleCount] = useState(15);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchRecipes = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/api/recipes");
-        setRecipes(res.data);
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/recipes`);
+        if (Array.isArray(res.data)) {
+          setRecipes(res.data);
+        } else {
+          throw new Error("Invalid data format from API");
+        }
       } catch (err) {
-        console.error("Failed to fetch recipes", err);
+        console.error("Failed to fetch recipes:", err);
+        setError("Failed to load recipes. Please try again later.");
       }
     };
 
@@ -41,12 +47,14 @@ function Home() {
         value={search}
         onChange={(e) => {
           setSearch(e.target.value);
-          setVisibleCount(15); // reset when searching
+          setVisibleCount(15); // Reset count on search
         }}
       />
 
+      {error && <p className="error">{error}</p>}
+
       <div className="recipes-grid">
-        {filteredRecipes.length > 0 ? (
+        {Array.isArray(filteredRecipes) && filteredRecipes.length > 0 ? (
           filteredRecipes.map((recipe) => (
             <div
               className="recipe-card"
