@@ -111,7 +111,7 @@ function SignUp() {
         )}
 
         <p>
-          Already have an account? <Link to="/login">Login</Link>
+          Already have an account? <Link to="/login" style={{textDecoration : 'none' , fontWeight : 'bold'}}>Login</Link>
         </p>
       </form>
     </div>

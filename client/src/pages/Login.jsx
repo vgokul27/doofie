@@ -71,7 +71,7 @@ function Login() {
         </button>
 
         <p>
-          Don’t have an account? <Link to="/">Sign Up</Link>
+          Don’t have an account? <Link to="/" style={{textDecoration : 'none' , fontWeight : 'bold'}}>Sign Up</Link>
         </p>
       </form>
     </div>
