@@ -12,6 +12,7 @@ import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
 import ProtectedRoute from "./components/ProtectedRoute";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   const location = useLocation();
@@ -64,6 +65,7 @@ function App() {
           <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
           <Route path="/apikey" element={<ProtectedRoute><ApiKey /></ProtectedRoute>} />
           <Route path="/recipes/:id" element={<ProtectedRoute><RecipeDetails /></ProtectedRoute>} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
 
         {!hideLayout && <Footer />}

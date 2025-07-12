@@ -73,6 +73,11 @@ function Login() {
         <p>
           Don’t have an account? <Link to="/" style={{textDecoration : 'none' , fontWeight : 'bold'}}>Sign Up</Link>
         </p>
+
+        <p className="forgot-password">
+          <Link to="/forgot-password">Forgot Password?</Link>
+        </p>
+
       </form>
     </div>
   );
