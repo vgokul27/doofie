@@ -50,7 +50,7 @@ function SignUp() {
     if (user) {
       try {
         await sendEmailVerification(createdUser, {
-        url: "http://localhost:5173/login", // ✅ Your front-end route
+        url: "http://localhost:5173/login", 
         handleCodeInApp: false
         });
         setVerifyMsg("Verification email sent. Please check your inbox.");
