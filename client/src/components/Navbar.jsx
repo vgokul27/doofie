@@ -24,7 +24,7 @@ const Navbar = () => {
           <FaBars size={24} />
         </div>
 
-        <div className="navbar-title">DOOFIE API</div>
+        <div className="navbar-title">DOOFIE</div>
 
         <ul className="nav-links">
           <li onClick={() => handleNavClick('/home')}>Home</li>
