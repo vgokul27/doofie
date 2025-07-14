@@ -11,22 +11,31 @@ function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchRecipes = async () => {
-      try {
-        const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/recipes`);
-        if (Array.isArray(res.data)) {
-          setRecipes(res.data);
-        } else {
-          throw new Error("Invalid data format from API");
-        }
-      } catch (err) {
-        console.error("Failed to fetch recipes:", err);
-        setError("Failed to load recipes. Please try again later.");
+  const fetchRecipes = async () => {
+    try {
+      const apiUrl = import.meta.env.VITE_API_URL;
+      if (!apiUrl) {
+        setError("API base URL not defined.");
+        return;
       }
-    };
 
-    fetchRecipes();
-  }, []);
+      const res = await axios.get(`${apiUrl}/api/recipes`);
+      console.log("✅ API Response:", res.data);
+
+      if (Array.isArray(res.data)) {
+        setRecipes(res.data);
+      } else {
+        throw new Error("Invalid data format from API");
+      }
+    } catch (err) {
+      console.error("❌ Failed to fetch recipes:", err);
+      setError("Failed to load recipes. Please try again later.");
+    }
+  };
+
+  fetchRecipes();
+}, []);
+
 
   const filteredRecipes = search
     ? recipes.filter((recipe) =>
