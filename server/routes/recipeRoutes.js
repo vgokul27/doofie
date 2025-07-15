@@ -2,7 +2,8 @@ import express from "express";
 import {
   addRecipe,
   getRecipes,
-  getRecipeById
+  getRecipeById,
+  handlePing
 } from "../controllers/recipeController.js";
 
 import {
@@ -18,5 +19,6 @@ router.post("/", verifyToken, verifyAdmin, addRecipe);
 // 🆓 Public access
 router.get("/", getRecipes);
 router.get("/:id", getRecipeById);
+router.get("/ping",handlePing);
 
 export default router;

@@ -31,3 +31,9 @@ export const getRecipeById = async (req, res) => {
     res.status(500).json({ message: "Failed to fetch recipe", error: err.message });
   }
 };
+
+// Ping controller
+export const handlePing = (req, res) => {
+  res.status(200).json({ message: "Server is awake!" });
+};
+
