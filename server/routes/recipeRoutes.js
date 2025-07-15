@@ -18,7 +18,7 @@ router.post("/", verifyToken, verifyAdmin, addRecipe);
 
 // 🆓 Public access
 router.get("/", getRecipes);
-router.get("/:id", getRecipeById);
 router.get("/ping",handlePing);
+router.get("/:id", getRecipeById);
 
 export default router;
