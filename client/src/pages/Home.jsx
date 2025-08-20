@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+<<<<<<< HEAD
 import { motion, AnimatePresence } from "framer-motion";
 import { FaSearch, FaClock, FaHeart } from "react-icons/fa";
+=======
+import "../styles/home.css";
+>>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
 
 function Home() {
   const [recipes, setRecipes] = useState([]);
@@ -48,6 +52,7 @@ function Home() {
     setVisibleCount((prev) => prev + 5);
   };
 
+<<<<<<< HEAD
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -401,6 +406,47 @@ function Home() {
         </motion.div>
       )}
     </motion.div>
+=======
+  return (
+    <div className="home-container">
+      <input
+        type="text"
+        className="search-bar"
+        placeholder="Search recipes..."
+        value={search}
+        onChange={(e) => {
+          setSearch(e.target.value);
+          setVisibleCount(15); // Reset count on search
+        }}
+      />
+
+      {error && <p className="error">{error}</p>}
+
+      <div className="recipes-grid">
+        {Array.isArray(filteredRecipes) && filteredRecipes.length > 0 ? (
+          filteredRecipes.map((recipe) => (
+            <div
+              className="recipe-card"
+              key={recipe._id}
+              onClick={() => navigate(`/recipes/${recipe._id}`)}
+            >
+              <img src={recipe.imageUrl} alt={recipe.title} />
+              <h3>{recipe.title}</h3>
+            </div>
+          ))
+        ) : (
+          <p className="no-results">No recipes found for "{search}"</p>
+        )}
+      </div>
+
+      {!search && visibleCount < recipes.length && (
+        <button className="load-more-btn" onClick={handleLoadMore}>
+          <strong>Load More</strong>
+        </button>
+      )}
+      <br />
+    </div>
+>>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
   );
 }
 

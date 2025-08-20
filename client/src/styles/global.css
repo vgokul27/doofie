@@ -1,11 +1,24 @@
+<<<<<<< HEAD
 /* Global utility classes for the application */
 
 .info {
   color: #16a34a;
+=======
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #1e1b17;
+}
+
+.info {
+  color: #2e7d32;
+>>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
   margin: 0.5rem 0;
 }
 
 .secondary-btn {
+<<<<<<< HEAD
   margin-top: 0.5rem;
   padding: 0.5rem 0.75rem;
   background-color: #e5e7eb;
@@ -98,5 +111,140 @@
 
 .input-box input {
   @apply input-field pl-12;
+=======
+  margin-top: 10px;
+  padding: 8px 12px;
+  background: #eee;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.success {
+  color: green;
+  font-size: 0.9rem;
+}
+
+.resend-btn {
+  background-color: #ff9800;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  margin-top: 0.8rem;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+.resend-btn:hover {
+  background-color: #e68900;
+}
+
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  height: 100vh;
+}
+
+.auth-form {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.auth-form input {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+}
+
+.auth-form .password-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-box input {
+  width: 100%;
+}
+
+.password-box span {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.auth-form button {
+  padding: 10px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.auth-form button:disabled {
+  background-color: #7aa8df;
+}
+
+.auth-form .error {
+  color: red;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.auth-form p {
+  margin-top: 10px;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+.eye {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.input-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-box .icon {
+  position: absolute;
+  right : 10px;
+  top: 10px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.input-box input {
+  padding-left: 35px; 
+  padding: 10px;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1em;
+>>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
 }
 

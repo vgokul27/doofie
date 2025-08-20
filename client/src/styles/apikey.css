@@ -1,0 +1,123 @@
+/* styles/apikey.css */
+
+.page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  min-height: 100vh;
+  background-color: #1e1b17;
+  box-sizing: border-box;
+}
+
+.form-wrapper {
+  max-width: 600px;
+  width: 100%;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.form-title {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  color: #333;
+}
+
+.box {
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  font-family: "Courier New", Courier, monospace;
+  margin-bottom: 20px;
+  color: #222;
+  word-break: break-word;
+}
+
+.regenerate-btn {
+  width: 100%;
+  background-color: crimson;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.regenerate-btn:hover {
+  background-color: #f0a500;
+}
+
+/* Loading and message styles */
+p {
+  text-align: center;
+  color: #666;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+
+
+/* 🔁 Mobile Responsive */
+@media (max-width: 600px) {
+  .form-wrapper {
+    padding: 20px;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+  }
+
+  .box {
+    font-size: 0.95rem;
+  }
+
+  .regenerate-btn {
+    font-size: 0.95rem;
+  }
+}
+
+.key-box-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.box {
+  flex: 1;
+  padding-right: 100px; /* leave space for copy button */
+}
+
+.copy-btn {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  padding: 8px 12px;
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.copy-btn:hover {
+  background-color: #218838;
+}
+
+@media (max-width: 600px) {
+  .copy-btn {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+}

@@ -2,8 +2,12 @@ import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../services/firebase";
 import { useNavigate, Link } from "react-router-dom";
+<<<<<<< HEAD
 import { FaEnvelope, FaEye, FaEyeSlash, FaLock } from "react-icons/fa";
 import { motion } from "framer-motion";
+=======
+import { FaEnvelope, FaEye, FaEyeSlash } from "react-icons/fa";
+>>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -29,7 +33,11 @@ function Login() {
 
       if (!user.emailVerified) {
         setError("Please verify your email before logging in.");
+<<<<<<< HEAD
         setLoading(false);
+=======
+        setLoading(false); // ✅ stop loading
+>>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
         return;
       }
 
@@ -41,6 +49,7 @@ function Login() {
     }
   };
 
+<<<<<<< HEAD
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
@@ -323,6 +332,47 @@ function Login() {
           </motion.div>
         </motion.form>
       </motion.div>
+=======
+  return (
+    <div className="auth-container">
+      <form className="auth-form" onSubmit={handleLogin}>
+        <h2>Login</h2>
+        {error && <p className="error">{error}</p>}
+
+        <div className="input-box">
+          <FaEnvelope className="icon" />
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value.trim())}
+          />
+        </div>
+
+        <div className="password-box">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <span onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? <FaEyeSlash /> : <FaEye />}
+          </span>
+        </div>
+
+        <button type="submit" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </button>
+
+        <p>
+          Don’t have an account? <Link to="/" style={{textDecoration : 'none' , fontWeight : 'bold'}}>Sign Up</Link>
+        </p>
+
+        <p className="forgot-password">
+          <Link to="/forgot-password">Forgot Password?</Link>
+        </p>
+
+      </form>
+>>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
     </div>
   );
 }

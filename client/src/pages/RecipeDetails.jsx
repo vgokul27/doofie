@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -9,23 +10,40 @@ function RecipeDetails() {
   const navigate = useNavigate();
   const [recipe, setRecipe] = useState(null);
   const [loading, setLoading] = useState(true);
+=======
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "../styles/recipedetails.css";
+
+function RecipeDetails() {
+  const { id } = useParams();
+  const [recipe, setRecipe] = useState(null);
+>>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
 
   useEffect(() => {
     const fetchRecipe = async () => {
       try {
+<<<<<<< HEAD
         setLoading(true);
+=======
+>>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
         const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/recipes/${id}`);
         setRecipe(res.data);
       } catch (err) {
         console.error("Error fetching recipe:", err);
+<<<<<<< HEAD
       } finally {
         setLoading(false);
+=======
+>>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
       }
     };
 
     fetchRecipe();
   }, [id]);
 
+<<<<<<< HEAD
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-dark-900 via-dark-800 to-dark-900 flex items-center justify-center">
@@ -60,6 +78,9 @@ function RecipeDetails() {
       </div>
     );
   }
+=======
+  if (!recipe) return <p>Loading...</p>;
+>>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
 
   // Format nutrition info into object pairs if it's a string
   const nutritionData = {};
@@ -72,6 +93,7 @@ function RecipeDetails() {
     });
   }
 
+<<<<<<< HEAD
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -485,6 +507,54 @@ function RecipeDetails() {
         </div>
       </div>
     </motion.div>
+=======
+  return (
+    <div className="recipe-details-container">
+      <div className="recipe-image">
+        <img src={recipe.imageUrl} alt={recipe.title} />
+      </div>
+
+      <div className="recipe-info">
+        <div className="recipe-header">
+          <h1>{recipe.title}</h1>
+          <p className="cooking-time"><strong>Cooking Time: </strong>{recipe.cookingTime} mins</p>
+        </div>
+
+        <h3>Ingredients:</h3>
+        <p>{recipe.ingredients.join(" , ")}</p>
+
+        <h3>Instructions:</h3>
+        {recipe.instructions
+          .split(".")
+          .filter((step) => step.trim())
+          .map((step, index) => (
+            <p key={index}><strong>Step {index + 1}:</strong> {step.trim()}.</p>
+          ))}
+
+        {Object.keys(nutritionData).length > 0 && (
+          <>
+            <h3>Nutrition:</h3>
+            <table className="nutrition-table">
+              <thead>
+                <tr>
+                  <th>Nutrient</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.entries(nutritionData).map(([key, value], idx) => (
+                  <tr key={idx}>
+                    <td>{key}</td>
+                    <td>{value}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
+        )}
+      </div>
+    </div>
+>>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
   );
 }
 
