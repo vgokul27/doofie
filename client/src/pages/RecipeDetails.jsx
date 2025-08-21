@@ -226,29 +226,7 @@ function RecipeDetails() {
                 </motion.button>
               </div>
 
-              {/* Recipe stats overlay */}
-              <div style={{
-                position: 'absolute',
-                bottom: '1.5rem',
-                left: '1.5rem',
-                right: '1.5rem',
-                background: 'rgba(0, 0, 0, 0.7)',
-                backdropFilter: 'blur(16px)',
-                borderRadius: '1rem',
-                padding: '1rem',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center'
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white' }}>
-                  <FaClock style={{ color: '#f97316' }} />
-                  <span style={{ fontWeight: '600' }}>{recipe.cookingTime} mins</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'white' }}>
-                  <FaUtensils style={{ color: '#f97316' }} />
-                  <span style={{ fontWeight: '600' }}>Easy</span>
-                </div>
-              </div>
+
             </motion.div>
           </motion.div>
 
@@ -265,12 +243,35 @@ function RecipeDetails() {
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
-                  marginBottom: '1rem',
+                  marginBottom: '0.5rem',
                   lineHeight: '1.1'
                 }}
               >
                 {recipe.title}
               </motion.h1>
+
+              {/* Easy Tag */}
+              <motion.div
+                variants={itemVariants}
+                style={{
+                  display: 'inline-block',
+                  background: 'rgba(249, 115, 22, 0.2)',
+                  border: '1px solid rgba(249, 115, 22, 0.4)',
+                  borderRadius: '1rem',
+                  padding: '0.375rem 1rem',
+                  marginBottom: '1.5rem'
+                }}
+              >
+                <span style={{
+                  color: '#f97316',
+                  fontSize: '0.875rem',
+                  fontWeight: '600',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.05em'
+                }}>
+                  Easy
+                </span>
+              </motion.div>
 
               <motion.div
                 variants={itemVariants}
