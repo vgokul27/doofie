@@ -12,10 +12,7 @@
   "dependencies": {
     "axios": "^1.10.0",
     "firebase": "^11.9.1",
-<<<<<<< HEAD
     "framer-motion": "^12.23.12",
-=======
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
@@ -25,26 +22,17 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
-<<<<<<< HEAD
     "@tailwindcss/postcss": "^4.1.12",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
     "autoprefixer": "^10.4.21",
-=======
-    "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.1.2",
-    "@vitejs/plugin-react": "^4.4.1",
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
     "eslint": "^9.25.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
-<<<<<<< HEAD
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.12",
-=======
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
     "vite": "^6.3.5"
   }
 }
