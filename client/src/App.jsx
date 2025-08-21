@@ -4,13 +4,6 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import AddRecipe from "./pages/AddRecipe";
-import About from "./pages/About";
-<<<<<<< HEAD
-import Favourites from "./pages/Favourites";
-=======
-import Settings from "./pages/Settings";
-import ApiKey from "./pages/ApiKey";
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
 import RecipeDetails from "./pages/RecipeDetails";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";

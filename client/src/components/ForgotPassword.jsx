@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 <<<<<<< HEAD
 import { FaEnvelope, FaArrowLeft, FaKey } from "react-icons/fa";
 import { motion } from "framer-motion";
-=======
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
 import "../styles/global.css";
 
 function ForgotPassword() {
