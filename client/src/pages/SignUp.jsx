@@ -2,12 +2,8 @@ import { useState } from "react";
 import { createUserWithEmailAndPassword, sendEmailVerification } from "firebase/auth";
 import { auth } from "../services/firebase";
 import { useNavigate, Link } from "react-router-dom";
-<<<<<<< HEAD
 import { FaEnvelope, FaEye, FaEyeSlash, FaLock, FaUserPlus } from "react-icons/fa";
 import { motion } from "framer-motion";
-=======
-import { FaEnvelope, FaEye, FaEyeSlash } from "react-icons/fa";
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
 import "../styles/global.css";
 
 function SignUp() {
@@ -68,7 +64,6 @@ function SignUp() {
     }
   };
 
-<<<<<<< HEAD
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
@@ -428,61 +423,6 @@ function SignUp() {
         </motion.form>
       </motion.div>
     </div>
-=======
-  return (
-    <div className="auth-container">
-      <form className="auth-form" onSubmit={handleSignUp}>
-        <h2>Create Account</h2>
-        {error && <p className="error">{error}</p>}
-        {verifyMsg && <p className="success">{verifyMsg}</p>}
-
-        <div className="input-box">
-          <FaEnvelope className="icon" />
-          <input
-            type="email"
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-
-        <div className="password-box">
-          <input
-            type={showPassword ? "text" : "password"}
-            placeholder="Password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <span className="eye" onClick={() => setShowPassword(!showPassword)}>
-            {showPassword ? <FaEyeSlash /> : <FaEye />}
-          </span>
-        </div>
-
-        <input
-          type="password"
-          placeholder="Confirm Password"
-          onChange={(e) => setConfirmPass(e.target.value)}
-        />
-
-        <button type="submit" disabled={loading}>
-          {loading ? "Signing up..." : "Sign Up"}
-        </button>
-
-        {user && (
-          <button
-            type="button"
-            onClick={handleResendVerification}
-            className="resend-btn"
-          >
-            Resend Verification Email
-          </button>
-        )}
-
-        <p>
-          Already have an account? <Link to="/login" style={{textDecoration : 'none' , fontWeight : 'bold'}}>Login</Link>
-        </p>
-      </form>
-    </div>
-    
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
   );
 }
 

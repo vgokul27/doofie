@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext"; 
 import axios from "axios";
-<<<<<<< HEAD
 import { motion } from "framer-motion";
 import { FaPlus, FaImage, FaClock, FaUtensils, FaListUl, FaFileAlt } from "react-icons/fa";
 import { getAuthToken } from "../services/firebase";
@@ -11,16 +10,6 @@ function AddRecipe() {
   const navigate = useNavigate();
   const { currentUser } = useAuth();
   const adminEmail = "vgokulraj691@gmail.com";
-=======
-import "../styles/addrecipe.css"; 
-import { getAuthToken } from "../services/firebase"; // ✅ import this
-
-
-function AddRecipe() {
-  const navigate = useNavigate();
-  const { currentUser } = useAuth(); // ✅ Get logged-in user
-  const adminEmail = "vgokulraj691@gmail.com"; // ✅ Replace with actual admin email
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
 
   const [recipe, setRecipe] = useState({
     title: "",
@@ -38,7 +27,6 @@ function AddRecipe() {
   };
 
   const handleSubmit = async (e) => {
-<<<<<<< HEAD
     e.preventDefault();
 
     try {
@@ -169,65 +157,11 @@ function AddRecipe() {
             Back to Home
           </motion.button>
         </motion.div>
-=======
-  e.preventDefault();
-
-  try {
-    const newRecipe = {
-      ...recipe,
-      ingredients: recipe.ingredients.split(",").map((item) => item.trim()),
-    };
-
-    const token = await getAuthToken(); // ✅ get token
-
-    if (!token) {
-      setMessage("❌ You must be logged in to add recipes.");
-      return;
-    }
-
-    const res = await axios.post(`${import.meta.env.VITE_API_URL}/api/recipes`, newRecipe, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
-
-    setMessage("✅ Recipe added successfully!");
-    setRecipe({
-      title: "",
-      imageUrl: "",
-      ingredients: "",
-      instructions: "",
-      cookingTime: "",
-      nutrition: "",
-    });
-
-    setTimeout(() => {
-      setMessage("");
-      navigate("/Home");
-    }, 1000);
-  } catch (err) {
-    console.error("❌ Error posting recipe:", err.response?.data || err.message);
-    setMessage("❌ Something went wrong. Try again.");
-  }
-};
-
-
-  // ✅ Restrict access to admin only
-  if (!currentUser || currentUser.email !== adminEmail) {
-    return (
-      <div className="page">
-        <div className="form-wrapper">
-          <h2 className="form-title" style={{ color: "crimson", textAlign: "center" }}>
-            ❌ Only admin can add recipes.
-          </h2>
-        </div>
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
       </div>
     );
   }
 
   return (
-<<<<<<< HEAD
     <div style={{
       minHeight: '100vh',
       background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
@@ -693,69 +627,6 @@ function AddRecipe() {
           </motion.form>
         </motion.div>
       </motion.div>
-=======
-    <div className="page">
-      <div className="form-wrapper">
-        <h2 className="form-title">Add Recipe</h2>
-
-        {message && <div className="msg">{message}</div>}
-
-        <form className="recipe-form" onSubmit={handleSubmit}>
-          <input
-            type="text"
-            name="title"
-            placeholder="Title"
-            value={recipe.title}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            type="text"
-            name="imageUrl"
-            placeholder="Image URL"
-            value={recipe.imageUrl}
-            onChange={handleChange}
-            required
-          />
-
-          <textarea
-            name="ingredients"
-            placeholder="Ingredients (comma separated)"
-            value={recipe.ingredients}
-            onChange={handleChange}
-            required
-          ></textarea>
-
-          <textarea
-            name="instructions"
-            placeholder="Instructions"
-            value={recipe.instructions}
-            onChange={handleChange}
-            required
-          ></textarea>
-
-          <input
-            type="number"
-            name="cookingTime"
-            placeholder="Cooking Time (in mins)"
-            value={recipe.cookingTime}
-            onChange={handleChange}
-            required
-          />
-
-          <input
-            type="text"
-            name="nutrition"
-            placeholder="Nutrition Info"
-            value={recipe.nutrition}
-            onChange={handleChange}
-          />
-
-          <button type="submit">Add Recipe</button>
-        </form>
-      </div>
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
     </div>
   );
 }
