@@ -4,7 +4,9 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import AddRecipe from "./pages/AddRecipe";
+import About from "./pages/About";
 import RecipeDetails from "./pages/RecipeDetails";
+import Favourites from "./pages/Favourites";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 import Sidebar from "./components/Sidebar";
@@ -39,33 +41,23 @@ function App() {
   }, [sidebarVisible]);
 
   return (
-<<<<<<< HEAD
     <div style={{
       minHeight: '100vh',
       background: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%)',
       display: 'flex',
       flexDirection: 'column'
     }}>
-=======
-    <div>
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
       {/* Navbar */}
       {!hideLayout && <Navbar toggleSidebar={toggleSidebar} />}
 
       {/* Sidebar */}
       {!hideLayout && sidebarVisible && (
-<<<<<<< HEAD
         <div ref={sidebarRef} style={{ position: 'fixed', inset: 0, zIndex: 50 }}>
           <Sidebar isOpen={sidebarVisible} onClose={() => setSidebarVisible(false)} />
-=======
-        <div ref={sidebarRef} className="sidebar-wrapper">
-          <Sidebar collapsed={false} setCollapsed={setSidebarVisible} />
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
         </div>
       )}
 
       {/* Page Content */}
-<<<<<<< HEAD
       <div style={{
         flex: 1,
         display: 'flex',
@@ -87,21 +79,6 @@ function App() {
             <Route path="/forgot-password" element={<ForgotPassword />} />
           </Routes>
         </div>
-=======
-      <div style={{ flex: 1, padding: hideLayout ? "0" : "20px" }}>
-        <Routes>
-          <Route path="/" element={<Navigate to="/signup" />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/home" element={<ProtectedRoute><Home /></ProtectedRoute>} />
-          <Route path="/addrecipe" element={<ProtectedRoute><AddRecipe /></ProtectedRoute>} />
-          <Route path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
-          <Route path="/settings" element={<ProtectedRoute><Settings /></ProtectedRoute>} />
-          <Route path="/apikey" element={<ProtectedRoute><ApiKey /></ProtectedRoute>} />
-          <Route path="/recipes/:id" element={<ProtectedRoute><RecipeDetails /></ProtectedRoute>} />
-          <Route path="/forgot-password" element={<ForgotPassword />} />
-        </Routes>
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
 
         {!hideLayout && <Footer />}
       </div>

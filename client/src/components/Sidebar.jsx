@@ -1,14 +1,7 @@
-<<<<<<< HEAD
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaHome, FaPlus, FaHeart, FaInfoCircle, FaTimes, FaSignOutAlt } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
-=======
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FaHome, FaPlus, FaKey, FaInfoCircle, FaTimes, FaSignOutAlt } from 'react-icons/fa';
-import '../styles/sidebar.css'; 
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
 
 const Sidebar = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
@@ -18,7 +11,6 @@ const Sidebar = ({ isOpen, onClose }) => {
     onClose();
   };
 
-<<<<<<< HEAD
   const menuItems = [
     { path: '/home', icon: FaHome, label: 'Home' },
     { path: '/addrecipe', icon: FaPlus, label: 'Add Recipe' },
@@ -142,34 +134,6 @@ const Sidebar = ({ isOpen, onClose }) => {
         </>
       )}
     </AnimatePresence>
-=======
-  return (
-    <div className={`sidebar ${isOpen ? 'open' : ''}`}>
-      <div className="sidebar-header">
-        <h3>Menu</h3>
-        <FaTimes className="close-icon" onClick={onClose} />
-      </div>
-      
-      <ul className="sidebar-menu">
-        <li onClick={() => handleNavigation('/home')}>
-          <FaHome className="sidebar-icon" />
-          <span>Home</span>
-        </li>
-        <li onClick={() => handleNavigation('/addrecipe')}>
-          <FaPlus className="sidebar-icon" />
-          <span>Add Recipe</span>
-        </li>
-        <li onClick={() => handleNavigation('/apikey')}>
-          <FaKey className="sidebar-icon" />
-          <span>API Key</span>
-        </li>
-        <li onClick={() => handleNavigation('/login')}>
-          <FaSignOutAlt className="sidebar-icon" />
-          <span>Logout</span>
-        </li>
-      </ul>
-    </div>
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
   );
 };
 

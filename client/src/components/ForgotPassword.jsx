@@ -2,10 +2,8 @@ import { useState } from "react";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../services/firebase";
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
 import { FaEnvelope, FaArrowLeft, FaKey } from "react-icons/fa";
 import { motion } from "framer-motion";
-import "../styles/global.css";
 
 function ForgotPassword() {
   const [email, setEmail] = useState("");
@@ -25,7 +23,6 @@ function ForgotPassword() {
     }
   };
 
-<<<<<<< HEAD
   const containerVariants = {
     hidden: { opacity: 0, scale: 0.8 },
     visible: {
@@ -145,25 +142,6 @@ function ForgotPassword() {
           </motion.div>
         </motion.form>
       </motion.div>
-=======
-  return (
-    <div className="auth-container">
-      <form className="auth-form" onSubmit={handleReset}>
-        <h2>Reset Password</h2>
-        {message && <p className="success">{message}</p>}
-        {error && <p className="error">{error}</p>}
-
-        <input
-          type="email"
-          placeholder="Enter your email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button type="submit">Send Reset Link</button>
-        <p>
-          Go back to <Link to="/login">Login</Link>
-        </p>
-      </form>
->>>>>>> 0ac0eaab49ef9dd1d70312cbcba3ece64b1ea6cb
     </div>
   );
 }
