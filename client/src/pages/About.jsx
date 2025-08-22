@@ -29,11 +29,6 @@ function About() {
       description: "Add your favorite recipes with detailed instructions and beautiful images"
     },
     {
-      icon: FaCode,
-      title: "API Access",
-      description: "Generate your own API key to integrate recipes into your applications"
-    },
-    {
       icon: FaDatabase,
       title: "Secure Storage",
       description: "All recipes are securely stored with MongoDB and Firebase authentication"
@@ -173,77 +168,6 @@ function About() {
               </motion.div>
             );
           })}
-        </motion.div>
-
-        {/* Technology Stack */}
-        <motion.div variants={itemVariants} className="glass-card p-8 mb-16">
-          <h2 className="text-3xl font-bold text-white text-center mb-8">Built With Modern Technology</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {technologies.map((tech, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-                className="text-center p-4 bg-white/5 rounded-lg"
-              >
-                <div className={`text-2xl font-bold ${tech.color} mb-2`}>{tech.name}</div>
-                <div className="text-gray-400 text-sm">{tech.description}</div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Quote Section */}
-        <motion.div variants={itemVariants} className="text-center">
-          <motion.div
-            whileHover={{ scale: 1.02 }}
-            className="glass-card p-8 max-w-4xl mx-auto"
-          >
-            <FaHeart className="text-primary-400 text-4xl mx-auto mb-6" />
-            <blockquote className="text-2xl md:text-3xl font-light text-white mb-6 italic">
-              "Good food is the foundation of genuine happiness."
-            </blockquote>
-            <cite className="text-primary-400 font-semibold">– Auguste Escoffier</cite>
-          </motion.div>
-        </motion.div>
-
-        {/* Community Section */}
-        <motion.div variants={itemVariants} className="text-center mt-16">
-          <div className="glass-card p-8">
-            <FaUsers className="text-primary-400 text-4xl mx-auto mb-6" />
-            <h3 className="text-2xl font-bold text-white mb-4">Join Our Community</h3>
-            <p className="text-gray-300 mb-6">
-              Connect with fellow food enthusiasts, share your culinary creations, and discover amazing recipes from around the world.
-            </p>
-            <div className="flex justify-center space-x-4">
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center"
-              >
-                <span className="text-white font-bold">👨‍🍳</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center"
-              >
-                <span className="text-white font-bold">📖</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center"
-              >
-                <span className="text-white font-bold">🖼️</span>
-              </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.1 }}
-                className="w-12 h-12 bg-primary-500 rounded-full flex items-center justify-center"
-              >
-                <span className="text-white font-bold">🔑</span>
-              </motion.div>
-            </div>
-          </div>
         </motion.div>
       </div>
     </motion.div>
