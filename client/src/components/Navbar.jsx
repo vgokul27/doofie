@@ -4,6 +4,7 @@ import {
   FaHeart,
   FaSignOutAlt,
   FaUtensils,
+  FaInfoCircle,
 } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -20,6 +21,7 @@ const Navbar = () => {
     { path: "/home", label: "Home", icon: FaHome },
     { path: "/addrecipe", label: "Add Recipe", icon: FaPlus },
     { path: "/favourites", label: "Favourites", icon: FaHeart },
+    { path: "/about", label: "About", icon: FaInfoCircle },
   ];
 
   return (
@@ -32,7 +34,7 @@ const Navbar = () => {
             <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-xl flex items-center justify-center shadow-lg">
               <FaUtensils className="text-white text-lg" />
             </div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary-600 to-primary-700 bg-clip-text text-transparent">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent">
               DOOFIE
             </h1>
           </div>

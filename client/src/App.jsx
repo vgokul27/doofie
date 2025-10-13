@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 import { FaBars, FaUtensils } from "react-icons/fa";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
@@ -108,52 +109,54 @@ function App() {
         }`}
       >
         <div className="max-w-7xl mx-auto">
-          <Routes>
-            <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/login" element={<Login />} />
-            <Route
-              path="/home"
-              element={
-                <ProtectedRoute>
-                  <Home />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/addrecipe"
-              element={
-                <ProtectedRoute>
-                  <AddRecipe />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/about"
-              element={
-                <ProtectedRoute>
-                  <About />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/favourites"
-              element={
-                <ProtectedRoute>
-                  <Favourites />
-                </ProtectedRoute>
-              }
-            />
-            <Route
-              path="/recipes/:id"
-              element={
-                <ProtectedRoute>
-                  <RecipeDetails />
-                </ProtectedRoute>
-              }
-            />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-          </Routes>
+          <AnimatePresence mode="wait" initial={false}>
+            <Routes location={location} key={location.pathname}>
+              <Route path="/" element={<Navigate to="/home" />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/login" element={<Login />} />
+              <Route
+                path="/home"
+                element={
+                  <ProtectedRoute>
+                    <Home />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/addrecipe"
+                element={
+                  <ProtectedRoute>
+                    <AddRecipe />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/about"
+                element={
+                  <ProtectedRoute>
+                    <About />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/favourites"
+                element={
+                  <ProtectedRoute>
+                    <Favourites />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/recipes/:id"
+                element={
+                  <ProtectedRoute>
+                    <RecipeDetails />
+                  </ProtectedRoute>
+                }
+              />
+              <Route path="/forgot-password" element={<ForgotPassword />} />
+            </Routes>
+          </AnimatePresence>
         </div>
       </div>
 

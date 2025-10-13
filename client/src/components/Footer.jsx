@@ -47,23 +47,8 @@ function Footer() {
   ];
 
   return (
-    <footer className="relative bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 text-white w-full mt-12">
-      {/* Top Wave Decoration */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden">
-        <svg
-          className="relative block w-full h-16 text-slate-50"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-            fill="currentColor"
-          ></path>
-        </svg>
-      </div>
-
-      <div className="relative pt-20 pb-0">
+    <footer className="bg-slate-900 text-white w-full mt-10">
+      <div className="pt-12 pb-0">
         <div className="w-full px-4 sm:px-6 lg:px-8">
           {/* Main Footer Content */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
@@ -73,7 +58,7 @@ function Footer() {
                 <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center shadow-lg">
                   <FaUtensils className="text-white text-xl" />
                 </div>
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent">
                   DOOFIE
                 </h3>
               </div>
@@ -92,7 +77,7 @@ function Footer() {
               {/* Contact Info */}
               <div className="flex items-center space-x-3 text-gray-400">
                 <FaEnvelope className="text-primary-500" />
-                <span>hello@doofie.com</span>
+                <span>recipes@doofie.com</span>
               </div>
             </div>
 

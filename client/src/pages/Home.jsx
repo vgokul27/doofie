@@ -1,14 +1,24 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { motion } from "framer-motion";
 import { FaSearch, FaUtensils, FaClock, FaHeart } from "react-icons/fa";
+import {
+  pageVariants,
+  pageTransition,
+  containerVariants,
+  cardVariants,
+  buttonVariants,
+  pulseAnimation,
+} from "../utils/animations";
 
 function Home() {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
-  const [visibleCount, setVisibleCount] = useState(15);
+  const [visibleCount, setVisibleCount] = useState(16);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const [favorites, setFavorites] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -37,8 +47,43 @@ function Home() {
       }
     };
 
+    // Load favorites from localStorage
+    const loadFavorites = () => {
+      const savedFavorites =
+        JSON.parse(localStorage.getItem("favouriteRecipes")) || [];
+      setFavorites(savedFavorites.map((fav) => fav._id));
+    };
+
     fetchRecipes();
+    loadFavorites();
   }, []);
+
+  const toggleFavorite = (e, recipe) => {
+    e.stopPropagation(); // Prevent navigation when clicking heart
+    const savedFavorites =
+      JSON.parse(localStorage.getItem("favouriteRecipes")) || [];
+    const isCurrentlyFavorite = favorites.includes(recipe._id);
+
+    if (isCurrentlyFavorite) {
+      // Remove from favorites
+      const updatedFavorites = savedFavorites.filter(
+        (fav) => fav._id !== recipe._id
+      );
+      localStorage.setItem(
+        "favouriteRecipes",
+        JSON.stringify(updatedFavorites)
+      );
+      setFavorites((prev) => prev.filter((id) => id !== recipe._id));
+    } else {
+      // Add to favorites
+      const updatedFavorites = [...savedFavorites, recipe];
+      localStorage.setItem(
+        "favouriteRecipes",
+        JSON.stringify(updatedFavorites)
+      );
+      setFavorites((prev) => [...prev, recipe._id]);
+    }
+  };
 
   const filteredRecipes = search
     ? recipes.filter((recipe) =>
@@ -47,80 +92,113 @@ function Home() {
     : recipes.slice(0, visibleCount);
 
   const handleLoadMore = () => {
-    setVisibleCount((prev) => prev + 5);
+    setVisibleCount((prev) => prev + 4);
   };
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center space-y-4">
-          <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center animate-pulse mx-auto">
+      <motion.div
+        className="min-h-screen flex items-center justify-center"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <motion.div
+          className="text-center space-y-4"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+        >
+          <motion.div
+            className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center mx-auto"
+            animate={pulseAnimation}
+          >
             <FaUtensils className="text-white text-2xl" />
-          </div>
-          <p className="text-gray-600 font-medium">
+          </motion.div>
+          <motion.p
+            className="text-gray-600 font-medium"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+          >
             Loading delicious recipes...
-          </p>
-        </div>
-      </div>
+          </motion.p>
+        </motion.div>
+      </motion.div>
     );
   }
 
   return (
-    <div className="min-h-screen animate-fade-in">
+    <motion.div
+      className="min-h-screen"
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-600 text-white py-12 mb-8 rounded-3xl overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="relative max-w-4xl mx-auto text-center px-6">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4 leading-tight">
+      <motion.div
+        className="relative text-gray-800 py-4 mb-6"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className="max-w-3xl mx-auto text-center px-4">
+          <h1 className="text-2xl md:text-3xl font-bold mb-2 leading-tight text-gray-800">
             Discover Amazing
-            <span className="block bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
-              Recipes
-            </span>
+            <span className=" text-primary-600"> Recipes </span>
           </h1>
-          <p className="text-lg md:text-xl text-white/90 mb-6 max-w-2xl mx-auto leading-relaxed">
-            From quick weeknight dinners to gourmet masterpieces, find your next
-            favorite dish
+          <p className="text-sm md:text-base text-gray-600 mb-8 mt-4 max-w-2xl mx-auto leading-relaxed">
+            From quick weeknight dinners to gourmet masterpieces, find your next favorite dish
           </p>
 
           {/* Search Bar */}
-          <div className="relative max-w-2xl mx-auto">
-            <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-              <FaSearch className="text-gray-400" />
+          <div className="relative max-w-xl mx-auto">
+            <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+              <FaSearch className="text-gray-400 text-sm" />
             </div>
             <input
               type="text"
-              className="w-full pl-12 pr-4 py-4 rounded-2xl bg-white/95 backdrop-blur-sm text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-white/30 transition-all duration-300 text-lg shadow-xl"
-              placeholder="Search for recipes, ingredients, cuisine..."
+              className="w-full pl-10 pr-4 py-3 rounded-4xl bg-white border border-gray-200 text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500/30 focus:border-primary-500 transition-all duration-300 shadow-sm"
+              placeholder="Search for recipes, ingredients..."
               value={search}
               onChange={(e) => {
                 setSearch(e.target.value);
-                setVisibleCount(15);
+                setVisibleCount(16);
               }}
             />
           </div>
         </div>
-
-        {/* Decorative Elements */}
-        <div className="absolute top-10 left-10 w-20 h-20 bg-white/10 rounded-full animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-16 h-16 bg-white/10 rounded-full animate-bounce-subtle"></div>
-        <div className="absolute top-1/2 right-20 w-12 h-12 bg-white/10 rounded-full animate-pulse"></div>
-      </div>
+      </motion.div>
 
       {/* Error State */}
       {error && (
-        <div className="bg-red-50 border border-red-200 text-red-700 px-6 py-4 rounded-2xl mb-8 text-center">
+        <motion.div
+          className="bg-red-50 border border-red-200 text-red-700 px-6 py-4 rounded-2xl mb-8 text-center"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
           <p className="font-medium">{error}</p>
-        </div>
+        </motion.div>
       )}
 
       {/* Recipes Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+      <motion.div
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
         {Array.isArray(filteredRecipes) && filteredRecipes.length > 0 ? (
           filteredRecipes.map((recipe, index) => (
-            <div
+            <motion.div
               key={recipe._id}
-              className="card group cursor-pointer overflow-hidden hover:scale-105 transform transition-all duration-300 animate-slide-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="card group cursor-pointer overflow-hidden transform transition-all duration-300"
+              variants={cardVariants}
+              whileHover={{ scale: 1.05, y: -5 }}
+              whileTap={{ scale: 0.98 }}
               onClick={() => navigate(`/recipes/${recipe._id}`)}
             >
               <div className="relative overflow-hidden rounded-xl mb-4">
@@ -141,14 +219,27 @@ function Home() {
                 <div className="flex items-center justify-between mt-3">
                   <div className="flex items-center space-x-1 text-gray-500">
                     <FaClock className="text-xs" />
-                    <span className="text-sm">30 mins</span>
+                    <span className="text-sm">{recipe.cookingTime} mins</span>
                   </div>
-                  <div className="w-8 h-8 bg-primary-100 hover:bg-primary-200 rounded-full flex items-center justify-center transition-colors duration-200">
-                    <FaHeart className="text-primary-600 text-sm" />
-                  </div>
+                  <button
+                    onClick={(e) => toggleFavorite(e, recipe)}
+                    className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-200 ${
+                      favorites.includes(recipe._id)
+                        ? "bg-red-100 hover:bg-red-200"
+                        : "bg-gray-100 hover:bg-gray-200"
+                    }`}
+                  >
+                    <FaHeart
+                      className={`text-sm ${
+                        favorites.includes(recipe._id)
+                          ? "text-red-500"
+                          : "text-gray-400"
+                      }`}
+                    />
+                  </button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))
         ) : (
           <div className="col-span-full text-center py-16">
@@ -165,21 +256,29 @@ function Home() {
             </p>
           </div>
         )}
-      </div>
+      </motion.div>
 
       {/* Load More Button */}
       {!search && visibleCount < recipes.length && (
-        <div className="text-center pb-8">
-          <button
+        <motion.div
+          className="text-center pb-8"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          <motion.button
             onClick={handleLoadMore}
             className="btn-primary inline-flex items-center space-x-2 text-lg px-8 py-4"
+            variants={buttonVariants}
+            whileHover="hover"
+            whileTap="tap"
           >
             <span>Load More Recipes</span>
             <FaUtensils className="text-sm" />
-          </button>
-        </div>
+          </motion.button>
+        </motion.div>
       )}
-    </div>
+    </motion.div>
   );
 }
 

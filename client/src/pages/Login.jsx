@@ -2,6 +2,7 @@ import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../services/firebase";
 import { useNavigate, Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   FaEnvelope,
   FaEye,
@@ -11,6 +12,14 @@ import {
   FaLock,
   FaExclamationTriangle,
 } from "react-icons/fa";
+import {
+  pageVariants,
+  pageTransition,
+  fadeInUpVariants,
+  scaleVariants,
+  buttonVariants,
+  slideInVariants,
+} from "../utils/animations";
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -57,25 +66,51 @@ function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      <div className="max-w-md w-full space-y-8">
+    <motion.div
+      className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50"
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
+      <motion.div
+        className="max-w-md w-full space-y-8"
+        initial="hidden"
+        animate="visible"
+        variants={fadeInUpVariants}
+      >
         {/* Header */}
-        <div className="text-center">
-          <div className="flex justify-center mb-6">
-            <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center shadow-2xl">
+        <motion.div className="text-center" variants={scaleVariants}>
+          <motion.div
+            className="flex justify-center mb-6"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{
+              type: "spring",
+              stiffness: 260,
+              damping: 20,
+              delay: 0.1,
+            }}
+          >
+            <motion.div
+              className="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center shadow-2xl"
+              whileHover={{ scale: 1.05, rotate: 5 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <FaUtensils className="text-white text-3xl" />
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
           <h1 className="text-4xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent mb-2">
             Welcome Back
           </h1>
           <p className="text-gray-600 text-lg">
             Sign in to continue your culinary journey
           </p>
-        </div>
+        </motion.div>
 
         {/* Form */}
-        <div className="card p-8 space-y-6">
+        <motion.div className="card p-8 space-y-6" variants={slideInVariants}>
           <form onSubmit={handleLogin} className="space-y-6">
             {/* Error Message */}
             {error && (
@@ -143,12 +178,15 @@ function Login() {
             </div>
 
             {/* Login Button */}
-            <button
+            <motion.button
               type="submit"
               disabled={loading}
               className={`w-full btn-primary text-lg py-4 ${
                 loading ? "opacity-70 cursor-not-allowed" : ""
               }`}
+              variants={buttonVariants}
+              whileHover={!loading ? "hover" : {}}
+              whileTap={!loading ? "tap" : {}}
             >
               {loading ? (
                 <div className="flex items-center justify-center space-x-2">
@@ -161,7 +199,7 @@ function Login() {
                   <span>Sign In</span>
                 </div>
               )}
-            </button>
+            </motion.button>
 
             {/* Sign Up Link */}
             <div className="text-center pt-6 border-t border-gray-200">
@@ -176,16 +214,21 @@ function Login() {
               </p>
             </div>
           </form>
-        </div>
+        </motion.div>
 
         {/* Footer */}
-        <div className="text-center">
+        <motion.div
+          className="text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5, duration: 0.5 }}
+        >
           <p className="text-sm text-gray-500">
             Secure login powered by Firebase Authentication
           </p>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 }
 

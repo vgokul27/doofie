@@ -5,6 +5,7 @@ import {
 } from "firebase/auth";
 import { auth } from "../services/firebase";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   FaEnvelope,
   FaEye,
@@ -15,6 +16,14 @@ import {
   FaCheckCircle,
   FaExclamationTriangle,
 } from "react-icons/fa";
+import {
+  pageVariants,
+  pageTransition,
+  fadeInUpVariants,
+  scaleVariants,
+  buttonVariants,
+  slideInVariants,
+} from "../utils/animations";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -81,8 +90,20 @@ function SignUp() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      <div className="max-w-md w-full space-y-8">
+    <motion.div
+      className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50"
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
+      <motion.div
+        className="max-w-md w-full space-y-8"
+        initial="hidden"
+        animate="visible"
+        variants={fadeInUpVariants}
+      >
         {/* Header */}
         <div className="text-center">
           <div className="flex justify-center mb-6">
@@ -248,8 +269,8 @@ function SignUp() {
             By signing up, you agree to our Terms of Service and Privacy Policy
           </p>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 

@@ -7,6 +7,7 @@ import {
   FaTimes,
   FaSignOutAlt,
   FaUtensils,
+  FaInfoCircle,
 } from "react-icons/fa";
 
 const Sidebar = ({ onClose }) => {
@@ -22,6 +23,7 @@ const Sidebar = ({ onClose }) => {
     { path: "/home", label: "Home", icon: FaHome },
     { path: "/addrecipe", label: "Add Recipe", icon: FaPlus },
     { path: "/favourites", label: "Favourites", icon: FaHeart },
+    { path: "/about", label: "About", icon: FaInfoCircle },
   ];
 
   return (

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 import { getAuthToken } from "../services/firebase";
+import { motion } from "framer-motion";
 import {
   FaUtensils,
   FaImage,
@@ -14,6 +15,14 @@ import {
   FaExclamationTriangle,
   FaLock,
 } from "react-icons/fa";
+import {
+  pageVariants,
+  pageTransition,
+  containerVariants,
+  cardVariants,
+  fadeInUpVariants,
+  buttonVariants,
+} from "../utils/animations";
 
 function AddRecipe() {
   const navigate = useNavigate();
@@ -112,31 +121,47 @@ function AddRecipe() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-8 px-4">
-      <div className="max-w-4xl mx-auto">
+    <motion.div
+      className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 py-8 px-4"
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransition}
+    >
+      <motion.div
+        className="max-w-4xl mx-auto"
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+      >
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div className="text-center mb-12" variants={fadeInUpVariants}>
           <div className="flex justify-center mb-6">
             <div className="w-16 h-16 bg-gradient-to-br from-primary-500 to-primary-600 rounded-2xl flex items-center justify-center shadow-lg">
               <FaUtensils className="text-white text-2xl" />
             </div>
           </div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent mb-4">
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-primary-500 to-primary-600 bg-clip-text text-transparent mb-4">
             Add New Recipe
           </h1>
           <p className="text-gray-600 text-lg">
             Share a delicious recipe with the Doofie community
           </p>
-        </div>
+        </motion.div>
 
         {/* Status Messages */}
         {message && (
-          <div
+          <motion.div
             className={`mb-8 p-4 rounded-xl border-l-4 ${
               message.includes("✅")
                 ? "bg-green-50 border-green-400 text-green-700"
                 : "bg-red-50 border-red-400 text-red-700"
             }`}
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ duration: 0.3 }}
           >
             <div className="flex items-center">
               {message.includes("✅") ? (
@@ -146,11 +171,11 @@ function AddRecipe() {
               )}
               <span className="font-medium">{message}</span>
             </div>
-          </div>
+          </motion.div>
         )}
 
         {/* Form */}
-        <div className="card p-8">
+        <motion.div className="card p-8" variants={cardVariants}>
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Recipe Title */}
             <div className="space-y-2">
@@ -272,12 +297,15 @@ function AddRecipe() {
 
             {/* Submit Button */}
             <div className="pt-6 border-t border-gray-200">
-              <button
+              <motion.button
                 type="submit"
                 disabled={loading}
                 className={`w-full btn-primary text-lg py-4 ${
                   loading ? "opacity-70 cursor-not-allowed" : ""
                 }`}
+                variants={buttonVariants}
+                whileHover={!loading ? "hover" : {}}
+                whileTap={!loading ? "tap" : {}}
               >
                 {loading ? (
                   <div className="flex items-center justify-center space-x-2">
@@ -290,19 +318,29 @@ function AddRecipe() {
                     <span>Add Recipe</span>
                   </div>
                 )}
-              </button>
+              </motion.button>
             </div>
           </form>
-        </div>
+        </motion.div>
 
         {/* Back Button */}
-        <div className="text-center mt-8">
-          <button onClick={() => navigate("/home")} className="btn-secondary">
+        <motion.div
+          className="text-center mt-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+        >
+          <motion.button
+            onClick={() => navigate("/home")}
+            className="btn-secondary"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
             Back to Home
-          </button>
-        </div>
-      </div>
-    </div>
+          </motion.button>
+        </motion.div>
+      </motion.div>
+    </motion.div>
   );
 }
 
