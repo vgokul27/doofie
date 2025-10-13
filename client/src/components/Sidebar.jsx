@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
   FaHome,
   FaPlus,
@@ -26,9 +27,39 @@ const Sidebar = ({ onClose }) => {
     { path: "/about", label: "About", icon: FaInfoCircle },
   ];
 
+  // Simple animation variants
+  const sidebarVariants = {
+    hidden: {
+      x: -320,
+      opacity: 0,
+    },
+    visible: {
+      x: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+      },
+    },
+    exit: {
+      x: -320,
+      opacity: 0,
+      transition: {
+        duration: 0.2,
+        ease: "easeIn",
+      },
+    },
+  };
+
   return (
     // Sidebar Panel - mobile sidebar panel
-    <div className="w-80 h-full bg-white/95 backdrop-blur-lg border-r border-gray-200/50 shadow-2xl flex flex-col">
+    <motion.div
+      className="w-80 h-full bg-white/95 backdrop-blur-lg border-r border-gray-200/50 shadow-2xl flex flex-col"
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={sidebarVariants}
+    >
       {/* Header */}
       <div className="flex items-center justify-between p-6 border-b border-gray-200/50">
         <div className="flex items-center space-x-3">
@@ -39,12 +70,15 @@ const Sidebar = ({ onClose }) => {
             DOOFIE
           </h2>
         </div>
-        <button
+        <motion.button
           onClick={onClose}
           className="p-2 rounded-xl hover:bg-gray-100 transition-colors duration-200"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ duration: 0.2 }}
         >
           <FaTimes className="text-gray-600" size={18} />
-        </button>
+        </motion.button>
       </div>
 
       {/* Navigation Menu */}
@@ -54,14 +88,17 @@ const Sidebar = ({ onClose }) => {
             const Icon = item.icon;
             const isActive = location.pathname === item.path;
             return (
-              <button
+              <motion.button
                 key={item.path}
                 onClick={() => handleNavigation(item.path)}
                 className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-left transition-all duration-200 group ${
                   isActive
-                    ? "bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg transform scale-105"
+                    ? "bg-gradient-to-r from-primary-500 to-primary-600 text-white shadow-lg"
                     : "text-gray-700 hover:bg-gray-100 hover:text-primary-600"
                 }`}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.2 }}
               >
                 <Icon
                   className={`text-lg ${
@@ -71,7 +108,7 @@ const Sidebar = ({ onClose }) => {
                   }`}
                 />
                 <span className="font-medium">{item.label}</span>
-              </button>
+              </motion.button>
             );
           })}
         </nav>
@@ -79,15 +116,18 @@ const Sidebar = ({ onClose }) => {
 
       {/* Bottom Section */}
       <div className="p-4 border-t border-gray-200/50">
-        <button
+        <motion.button
           onClick={() => handleNavigation("/login")}
           className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition-all duration-200 font-medium border border-red-200 hover:border-red-300"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ duration: 0.2 }}
         >
           <FaSignOutAlt className="text-lg" />
           <span>Logout</span>
-        </button>
+        </motion.button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
