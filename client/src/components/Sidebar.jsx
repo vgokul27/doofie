@@ -67,7 +67,7 @@ const Sidebar = ({ onClose }) => {
   return (
     // Sidebar Panel - mobile sidebar panel
     <motion.div
-      className="w-80 h-full bg-white/95 backdrop-blur-lg border-r border-gray-200/50 shadow-2xl flex flex-col"
+      className="w-72 h-full bg-white/95 backdrop-blur-lg border-r border-gray-200/50 shadow-2xl flex flex-col"
       initial="hidden"
       animate="visible"
       exit="exit"

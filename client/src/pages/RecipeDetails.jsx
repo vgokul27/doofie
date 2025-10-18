@@ -235,7 +235,7 @@ function RecipeDetails() {
       >
         <motion.button
           onClick={() => navigate("/home")}
-          className="flex items-center space-x-2 text-primary-600 hover:text-primary-700 transition-colors duration-200"
+          className="flex items-center space-x-2 mt-6 text-primary-600 hover:text-primary-700 transition-colors duration-200"
           variants={buttonVariants}
           whileHover="hover"
           whileTap="tap"
