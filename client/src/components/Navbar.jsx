@@ -5,15 +5,27 @@ import {
   FaSignOutAlt,
   FaUtensils,
   FaInfoCircle,
+  FaSignInAlt,
 } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { currentUser } = useAuth();
 
   // Navigation handler for desktop links
   const handleNavClick = (path) => {
+    // Check if the path requires authentication
+    const protectedRoutes = ["/addrecipe", "/favourites"];
+
+    if (protectedRoutes.includes(path) && !currentUser) {
+      // Redirect to login if user is not authenticated
+      navigate("/login");
+      return;
+    }
+
     navigate(path);
   };
 
@@ -61,14 +73,24 @@ const Navbar = () => {
             })}
           </div>
 
-          {/* Logout Button */}
-          <button
-            onClick={() => handleNavClick("/login")}
-            className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition-all duration-200 font-medium border border-red-200 hover:border-red-300"
-          >
-            <FaSignOutAlt className="text-sm" />
-            <span>Logout</span>
-          </button>
+          {/* Login/Logout Button */}
+          {currentUser ? (
+            <button
+              onClick={() => handleNavClick("/login")}
+              className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition-all duration-200 font-medium border border-red-200 hover:border-red-300"
+            >
+              <FaSignOutAlt className="text-sm" />
+              <span>Logout</span>
+            </button>
+          ) : (
+            <button
+              onClick={() => handleNavClick("/login")}
+              className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-primary-50 text-primary-600 hover:bg-primary-100 transition-all duration-200 font-medium border border-primary-200 hover:border-primary-300"
+            >
+              <FaSignInAlt className="text-sm" />
+              <span>Login</span>
+            </button>
+          )}
         </div>
       </div>
     </nav>

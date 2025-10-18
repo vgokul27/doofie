@@ -9,13 +9,26 @@ import {
   FaSignOutAlt,
   FaUtensils,
   FaInfoCircle,
+  FaSignInAlt,
 } from "react-icons/fa";
+import { useAuth } from "../context/AuthContext";
 
 const Sidebar = ({ onClose }) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { currentUser } = useAuth();
 
   const handleNavigation = (path) => {
+    // Check if the path requires authentication
+    const protectedRoutes = ["/addrecipe", "/favourites"];
+
+    if (protectedRoutes.includes(path) && !currentUser) {
+      // Redirect to login if user is not authenticated
+      navigate("/login");
+      onClose(); // Close sidebar after navigation
+      return;
+    }
+
     navigate(path);
     onClose(); // Close sidebar after navigation
   };
@@ -116,16 +129,29 @@ const Sidebar = ({ onClose }) => {
 
       {/* Bottom Section */}
       <div className="p-4 border-t border-gray-200/50">
-        <motion.button
-          onClick={() => handleNavigation("/login")}
-          className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition-all duration-200 font-medium border border-red-200 hover:border-red-300"
-          whileHover={{ scale: 1.02 }}
-          whileTap={{ scale: 0.98 }}
-          transition={{ duration: 0.2 }}
-        >
-          <FaSignOutAlt className="text-lg" />
-          <span>Logout</span>
-        </motion.button>
+        {currentUser ? (
+          <motion.button
+            onClick={() => handleNavigation("/login")}
+            className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl bg-red-50 text-red-600 hover:bg-red-100 transition-all duration-200 font-medium border border-red-200 hover:border-red-300"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+          >
+            <FaSignOutAlt className="text-lg" />
+            <span>Logout</span>
+          </motion.button>
+        ) : (
+          <motion.button
+            onClick={() => handleNavigation("/login")}
+            className="w-full flex items-center space-x-3 px-4 py-3 rounded-xl bg-primary-50 text-primary-600 hover:bg-primary-100 transition-all duration-200 font-medium border border-primary-200 hover:border-primary-300"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+          >
+            <FaSignInAlt className="text-lg" />
+            <span>Login</span>
+          </motion.button>
+        )}
       </div>
     </motion.div>
   );

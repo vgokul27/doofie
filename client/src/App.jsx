@@ -114,14 +114,11 @@ function App() {
               <Route path="/" element={<Navigate to="/home" />} />
               <Route path="/signup" element={<SignUp />} />
               <Route path="/login" element={<Login />} />
-              <Route
-                path="/home"
-                element={
-                  <ProtectedRoute>
-                    <Home />
-                  </ProtectedRoute>
-                }
-              />
+              {/* Public Pages - No login required */}
+              <Route path="/home" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/recipes/:id" element={<RecipeDetails />} />
+              {/* Protected Pages - Login required */}
               <Route
                 path="/addrecipe"
                 element={
@@ -131,26 +128,10 @@ function App() {
                 }
               />
               <Route
-                path="/about"
-                element={
-                  <ProtectedRoute>
-                    <About />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
                 path="/favourites"
                 element={
                   <ProtectedRoute>
                     <Favourites />
-                  </ProtectedRoute>
-                }
-              />
-              <Route
-                path="/recipes/:id"
-                element={
-                  <ProtectedRoute>
-                    <RecipeDetails />
                   </ProtectedRoute>
                 }
               />
