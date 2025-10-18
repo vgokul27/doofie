@@ -6,7 +6,11 @@ import {
   FaHeart,
   FaShieldAlt,
   FaGlobe,
+  FaReact,
+  FaNodeJs,
+  FaDatabase,
 } from "react-icons/fa";
+import { SiMongodb, SiFirebase, SiExpress } from "react-icons/si";
 import {
   pageVariants,
   pageTransition,
@@ -139,60 +143,119 @@ function About() {
           >
             Powered by Modern Technology
           </motion.h2>
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
-            variants={containerVariants}
-          >
+
+          {/* Frontend Technologies */}
+          <motion.div className="mb-12" variants={containerVariants}>
+            <motion.h3
+              className="text-xl font-semibold text-gray-700 mb-6 text-center"
+              variants={fadeInUpVariants}
+            >
+              Frontend Technologies
+            </motion.h3>
             <motion.div
-              className="space-y-4"
-              variants={cardVariants}
-              whileHover={{ scale: 1.05, y: -5 }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-8 text-center"
+              variants={containerVariants}
             >
               <motion.div
-                className="w-20 h-20 bg-gradient-to-br from-green-400 to-blue-500 rounded-2xl flex items-center justify-center mx-auto"
-                whileHover={{ rotate: 5, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="space-y-4"
+                variants={cardVariants}
+                whileHover={{ scale: 1.05, y: -5 }}
               >
-                <span className="text-white font-bold text-2xl">M</span>
+                <motion.div
+                  className="w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center mx-auto"
+                  whileHover={{ rotate: 5, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <FaReact className="text-white text-3xl" />
+                </motion.div>
+                <h3 className="text-xl font-bold text-gray-800">React</h3>
+                <p className="text-gray-600">
+                  Modern UI library for smooth, responsive user experience
+                </p>
               </motion.div>
-              <h3 className="text-xl font-bold text-gray-800">MongoDB</h3>
-              <p className="text-gray-600">
-                Reliable database for storing recipes and user data
-              </p>
+              <motion.div
+                className="space-y-4"
+                variants={cardVariants}
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
+                <motion.div
+                  className="w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-2xl flex items-center justify-center mx-auto"
+                  whileHover={{ rotate: -5, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <SiFirebase className="text-white text-3xl" />
+                </motion.div>
+                <h3 className="text-xl font-bold text-gray-800">Firebase</h3>
+                <p className="text-gray-600">
+                  Secure authentication and real-time features
+                </p>
+              </motion.div>
             </motion.div>
+          </motion.div>
+
+          {/* Backend Technologies */}
+          <motion.div variants={containerVariants}>
+            <motion.h3
+              className="text-xl font-semibold text-gray-700 mb-6 text-center"
+              variants={fadeInUpVariants}
+            >
+              Backend Technologies
+            </motion.h3>
             <motion.div
-              className="space-y-4"
-              variants={cardVariants}
-              whileHover={{ scale: 1.05, y: -5 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
+              variants={containerVariants}
             >
               <motion.div
-                className="w-20 h-20 bg-gradient-to-br from-orange-400 to-red-500 rounded-2xl flex items-center justify-center mx-auto"
-                whileHover={{ rotate: -5, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="space-y-4"
+                variants={cardVariants}
+                whileHover={{ scale: 1.05, y: -5 }}
               >
-                <span className="text-white font-bold text-2xl">F</span>
+                <motion.div
+                  className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto"
+                  whileHover={{ rotate: 5, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <FaNodeJs className="text-white text-3xl" />
+                </motion.div>
+                <h3 className="text-xl font-bold text-gray-800">Node.js</h3>
+                <p className="text-gray-600">
+                  JavaScript runtime for scalable server-side applications
+                </p>
               </motion.div>
-              <h3 className="text-xl font-bold text-gray-800">Firebase</h3>
-              <p className="text-gray-600">
-                Secure authentication and real-time features
-              </p>
-            </motion.div>
-            <motion.div
-              className="space-y-4"
-              variants={cardVariants}
-              whileHover={{ scale: 1.05, y: -5 }}
-            >
               <motion.div
-                className="w-20 h-20 bg-gradient-to-br from-blue-400 to-purple-500 rounded-2xl flex items-center justify-center mx-auto"
-                whileHover={{ rotate: 5, scale: 1.1 }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                className="space-y-4"
+                variants={cardVariants}
+                whileHover={{ scale: 1.05, y: -5 }}
               >
-                <span className="text-white font-bold text-2xl">R</span>
+                <motion.div
+                  className="w-20 h-20 bg-gradient-to-br from-gray-700 to-gray-900 rounded-2xl flex items-center justify-center mx-auto"
+                  whileHover={{ rotate: -5, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <SiExpress className="text-white text-3xl" />
+                </motion.div>
+                <h3 className="text-xl font-bold text-gray-800">Express.js</h3>
+                <p className="text-gray-600">
+                  Fast, minimalist web framework for Node.js APIs
+                </p>
               </motion.div>
-              <h3 className="text-xl font-bold text-gray-800">React</h3>
-              <p className="text-gray-600">
-                Smooth, responsive user experience
-              </p>
+              <motion.div
+                className="space-y-4"
+                variants={cardVariants}
+                whileHover={{ scale: 1.05, y: -5 }}
+              >
+                <motion.div
+                  className="w-20 h-20 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center mx-auto"
+                  whileHover={{ rotate: 5, scale: 1.1 }}
+                  transition={{ type: "spring", stiffness: 400, damping: 10 }}
+                >
+                  <SiMongodb className="text-white text-3xl" />
+                </motion.div>
+                <h3 className="text-xl font-bold text-gray-800">MongoDB</h3>
+                <p className="text-gray-600">
+                  NoSQL database for flexible recipe and user data storage
+                </p>
+              </motion.div>
             </motion.div>
           </motion.div>
         </motion.div>
